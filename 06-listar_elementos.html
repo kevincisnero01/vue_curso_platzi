@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Curso Basico VueJS</title>
+	<script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+	<h1>Listar Elementos Dinamicamente con VueJS</h1>
+	<fieldset style="width: 50%;">
+		<legend>Formulario</legend>
+		<form @submit.prevent="submit">
+			<p>¿Seleccione los cursos de su preferencia?</p>
+
+			<template v-for="curso in cursos">
+				<input type="checkbox" v-model="cursos_select" v-bind:id="curso.valor" v-bind:value="curso.valor">
+				<label v-bind:for="curso.valor">{{ curso.nombre }}</label>
+			</template>
+
+			<button type="submit">Enviar</button>
+		</form>
+	</fieldset>
+</div>
+
+<script type="text/javascript">
+	let app = new Vue({
+		el:"#app",
+		data: {
+			cursos: [
+			{ nombre: 'Curso de VueJS', valor: 'vue' },
+			{ nombre: 'Curso de Laravel', valor: 'laravel' },
+			{ nombre: 'Curso de Javascript', valor: 'js' },
+			{ nombre: 'Curso de HTML', valor: 'html' },
+			{ nombre: 'Curso de CSS', valor: 'css' },
+			],
+			cursos_select: []
+		},
+		methods:{
+			submit: function(){
+				console.log(this.cursos_select)
+			}
+		}
+	})
+</script>
+</body>
+</html>
