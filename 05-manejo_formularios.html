@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Curso Vue.JS</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<h1>Manejo de Formulario con VueJS</h1>
+
+
+		<fieldset style="width: 50%;">
+			<legend>Formulario1</legend>
+			<label for="nombre">Nombre: </label><input type="text"  v-model="nombre" placeholder="Ingrese su nombre">
+			<p>El nombre ingresado es: {{ nombre | uppercase }}</p>
+			<br>
+			<strong>Detalles:</strong>
+			<ul>
+				<li><b>Propiedad:</b> v-model="nombre"</li>
+				<li><b>Imprimir con filtro:</b>  nombre | uppercase "</li>
+			</ul>
+		</fieldset>
+
+		<fieldset style="width: 50%;">
+			<form v-on:submit.prevent="submit">
+			<legend>Formulario2</legend>
+			<p>¿Cuales son tus cursos preferidos?</p>
+			<label for="php"><input type="checkbox" v-model="cursos" id="php" value="php">PHP</label>
+			<label for="laravel"><input type="checkbox" v-model="cursos" id="laravel" value="laravel">Laravel</label>
+			<label for="mysql"><input type="checkbox" v-model="cursos" id="mysql" value="mysql">MySQL</label>
+			<label for="postgresql"><input type="checkbox" v-model="cursos" id="postgresql" value="postgresql">PostgreSQL</label>
+			<label for="vue"><input type="checkbox" v-model="cursos" id="vue" value="vue">VueJS</label>
+			<label for="react"><input type="checkbox" v-model="cursos" id="react" value="react">React</label>
+			<input type="submit" name="Enviar">
+			</form>
+			<br>
+			<strong>Detalles:</strong>
+			<ul>
+				<li><b>Prevenir Evento:</b> @submit.prevent="submit"</li>
+				<li><b>Propiedad:</b> v-model="cursos"</li>
+				<li><b>Inicializar array:</b>  cursos: []</li>
+				<li><b>Imprimir :</b> console.log(this.cursos)</li>
+			</ul>
+		</fieldset>
+	</div><!--#app-->
+
+	<script type="text/javascript">
+		let app = new Vue({
+			el: '#app',
+			data: {
+				nombre: '',
+				cursos: []
+			},
+			filters:{
+				uppercase: function(str)
+				{
+					return str.toUpperCase()
+				}
+			},
+			methods:{
+				submit: function(){
+					console.log('Se ejecuto el metodo submit')
+					console.log(this.cursos)
+				}
+			}
+		})
+	</script>
+</body>
+</html>
