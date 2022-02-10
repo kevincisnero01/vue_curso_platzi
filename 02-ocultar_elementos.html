@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Curso VueJS</title>
+	<script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+	<h1>Formas de Ocultar Elementos con Vue.JS</h1>
+	<div id="app">
+
+		<div v-if="showElement">
+			<h3>V-IF</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<a v-bind:href="url" target="_blank" >Ir a {{ page}} </a>
+		</div>
+
+		<template v-if="showElement">
+			<h3>TEMPLATE</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+		</template>
+
+		<div v-show = "showElement">
+			<h3>V-SHOW</h3>
+			<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>
+
+		<div v-show = "!showElement">
+			<h3>V-SHOW-OCULTO</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation</p>
+		</div>
+
+
+
+	</div><!--#app-->
+	<script type="text/javascript">
+		let app = new Vue({
+			el: '#app',
+			data: {
+				url: 'https://www.platzi.com',
+				page: 'Platzi',
+				showElement: true
+			}
+		})
+	</script>
+</body>
+</html>
