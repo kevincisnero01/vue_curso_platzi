@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Curso Vue.JS</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<h1>Eventos con VueJS (v-on:click)</h1>
+		<p><b>Contador</b> : {{ contador }}</p>
+		<button v-on:click="sumar">Sumar 1</button>
+		<button v-on:click="restar">Restar 1</button>
+		<!--<button @click="contador--">Restar</button>-->
+		<button @click="reset">Resetear a 0</button>
+	</div>
+	<script type="text/javascript">
+		let app = new Vue({
+			el: '#app',
+			data:{
+				contador: '0'
+			},
+			methods:{
+				sumar: function(){
+					this.contador++
+				},
+				restar: function(){
+					this.contador--
+				},
+				reset: function(){
+					this.contador = 0
+				}
+			}
+		})
+	</script>
+</body>
+</html>
